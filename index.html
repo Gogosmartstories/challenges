@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: green banner with a maroon serrated (Qatar) edge, then a 2x2 grid of day cards; each card opens its own /day/N page */
+/* Layout: green banner with a maroon serrated (Qatar) edge, then a 2x2 grid of day cards; each card opens its own ?day=N page */
 :root{
   --green:#1f5e3b; --green-2:#2f7d4f; --maroon:#8A1538; --accent-text:#1f5e3b;
   --sand:#f5f2ea; --card:#ffffff; --line:#e3ddd0;
@@ -331,7 +331,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-block:0 calc(
   function state(c, now){ var w = win(c); return now < w.start ? 'soon' : now < w.end ? 'open' : 'closed'; }
   function dateText(c){ var p = c.date.split('-'); return Number(p[2]) + ' ' + MONTHS[Number(p[1]) - 1]; }
   function isLocal(){ return location.protocol === 'file:' || /^(localhost|127\.)/.test(location.hostname); }
-  function dayHref(n){ return isLocal() ? '?day=' + n : '/day/' + n; }
+  function dayHref(n){ return '?day=' + n; }
   function dur(ms){
     var m = Math.ceil(ms / 60000), d = Math.floor(m / 1440), h = Math.floor(m % 1440 / 60), mm = m % 60;
     if (d >= 1) return (d === 1 ? 'يوم' : d === 2 ? 'يومين' : d + ' أيام') + (h ? ' و' + h + ' ساعة' : '');
@@ -404,7 +404,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-block:0 calc(
     document.body.className = 't-' + c.theme;
     document.title = c.title + ' | بيتنا مستدام';
     $('home').hidden = true; $('day').hidden = false;
-    $('back').href = $('done-back').href = isLocal() ? '?' : '/';
+    $('back').href = $('done-back').href = location.pathname.indexOf('/day/') === 0 ? '/' : location.pathname;
     $('d-ico').innerHTML = ICONS[c.theme];
     $('d-k').textContent = 'التحدي ' + c.day + ' من ' + LIST.length + ' · ' + c.weekday + ' ' + dateText(c);
     $('d-title').textContent = c.title;
