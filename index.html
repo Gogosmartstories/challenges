@@ -208,7 +208,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-block:0 calc(
     </section>
 
     <div class="sec-h"><h2>بطاقة التحديات الأسبوعية للأسرة</h2><span class="en">Weekly Family Challenges</span></div>
-    <p class="hint" style="margin-top:-12px">اضغطي على تحدي اليوم لإرسال صورة توضّح تنفيذه، أو وصف بسيط لكيفية تنفيذه. كل تحدٍّ مفتوح 24 ساعة فقط في يومه.</p>
+    <p class="hint" style="margin-top:-12px">اضغطي على تحدي اليوم لإرسال صورة توضّح تنفيذه، أو وصف بسيط لكيفية تنفيذه. جميع التحديات مفتوحة، ويمكنك المشاركة في أي وقت.</p>
     <div class="grid" id="grid"></div>
 
     <section class="card">
@@ -216,7 +216,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-block:0 calc(
       <div class="how">
         <div>نفّذي تحدي اليوم مع أسرتك في المنزل.</div>
         <div>صوّري التحدي، أو اكتبي وصفًا بسيطًا لطريقة تنفيذه.</div>
-        <div>افتحي بطاقة اليوم وأرسلي المشاركة قبل منتصف الليل.</div>
+        <div>افتحي بطاقة التحدي وأرسلي مشاركتك.</div>
       </div>
     </section>
 
@@ -311,7 +311,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-block:0 calc(
 <script src="/config.js"></script>
 <script>
 (function(){
-  var CFG = window.CONFIG || {}, LIST = CFG.CHALLENGES || [], UPLOAD_URL = CFG.UPLOAD_URL || '';
+  var CFG = window.CONFIG || {}, LIST = CFG.CHALLENGES || [], UPLOAD_URL = CFG.UPLOAD_URL || '', ALWAYS_OPEN = CFG.ALWAYS_OPEN !== false;
   var MAX = 10 * 1024 * 1024, DAY_MS = 86400000;
   var MONTHS = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
   var ICONS = {
@@ -346,19 +346,26 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-block:0 calc(
     var now = new Date();
     $('grid').innerHTML = LIST.map(function(c){
       var st = state(c, now), w = win(c);
+      if (ALWAYS_OPEN){
+        var today = st === 'open';
+        return card(c, today, '<span class="pill open">مفتوح للمشاركة</span>', 'شاركي الآن', '');
+      }
       var pill = st === 'open' ? '<span class="pill open">مفتوح الآن · يُغلق بعد ' + dur(w.end - now) + '</span>'
                : st === 'soon' ? '<span class="pill soon">يفتح بعد ' + dur(w.start - now) + '</span>'
                : '<span class="pill closed">انتهى التحدي</span>';
       var go = st === 'open' ? 'شاركي الآن' : st === 'soon' ? 'تفاصيل التحدي' : 'عرض التحدي';
-      return '<a class="ch t-' + c.theme + (st === 'open' ? ' is-today' : '') + (st === 'closed' ? ' is-closed' : '') + '" href="' + dayHref(c.day) + '">' +
-        (st === 'open' ? '<span class="today-flag">تحدي اليوم</span>' : '') +
+      return card(c, st === 'open', pill, go, st === 'closed' ? ' is-closed' : '');
+    }).join('');
+  }
+  function card(c, today, pill, go, extra){
+      return '<a class="ch t-' + c.theme + (today ? ' is-today' : '') + extra + '" href="' + dayHref(c.day) + '">' +
+        (today ? '<span class="today-flag">تحدي اليوم</span>' : '') +
         '<div class="ch-top"><div class="ico">' + ICONS[c.theme] + '</div>' +
         '<div class="when"><div class="wd">' + esc(c.weekday) + '</div><div class="dt">' + dateText(c) + '</div></div>' +
         '<span class="num">' + c.day + '</span></div>' +
         '<div class="ch-body"><h3 class="ch-title">' + esc(c.title) + '<small>' + esc(c.en) + '</small></h3>' +
         '<p class="ch-desc">' + esc(c.desc) + '</p>' +
         '<div class="ch-foot">' + pill + '<span class="go">' + go + ARROW + '</span></div></div></a>';
-    }).join('');
   }
 
   /* ---------- day page ---------- */
@@ -369,6 +376,13 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-block:0 calc(
   }
   function renderStatus(){
     var now = new Date(), st = state(current, now), w = win(current);
+    if (ALWAYS_OPEN){
+      $('entry').hidden = !$('done').hidden;
+      $('st-big').textContent = 'التحدي مفتوح للمشاركة';
+      $('st-sub').textContent = 'يمكنك إرسال مشاركتك في أي وقت.';
+      $('st-clock').textContent = '';
+      return;
+    }
     var open = st === 'open';
     $('entry').hidden = !open || !$('done').hidden;
     if (st === 'soon'){
@@ -445,7 +459,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding-block:0 calc(
 
     $('entry').addEventListener('submit', function(e){
       e.preventDefault(); showErr('');
-      if (state(current, new Date()) !== 'open'){ renderStatus(); return; }
+      if (!ALWAYS_OPEN && state(current, new Date()) !== 'open'){ renderStatus(); return; }
       var name = clean($('name').value), grade = clean($('grade').value), note = clean($('note').value), ok = true;
       if (!name){ $('name-err').textContent = 'اكتبي اسم الطالبة.'; ok = false; }
       if (!grade){ $('grade-err').textContent = 'اكتبي الصف والشعبة.'; ok = false; }

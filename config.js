@@ -1,10 +1,12 @@
 // إعدادات مبادرة «بيتنا مستدام.. وقطر تستحق»
 window.CONFIG = {
   // الصقي هنا رابط Web app من Google Apps Script (ينتهي بـ /exec)
-  UPLOAD_URL: "https://script.google.com/macros/s/AKfycbx3jWuznCB9AermkrzNQ1cLfRd_SWXy8bcNckRorYVqynZ3Lyq4-P-UohhTxGeDX1aF/exec",
+  UPLOAD_URL: "ضعي_هنا_رابط_السكريبت",
 
-  // كل تحدٍّ مفتوح 24 ساعة فقط في تاريخه (من 12:00 ص إلى 11:59 م بتوقيت قطر)
-  // إذا غيّرتِ التواريخ هنا، غيّريها أيضًا في ملف Code.gs
+  // true: جميع التحديات مفتوحة دائمًا دون وقت محدد
+  // false: كل تحدٍّ مفتوح 24 ساعة فقط في تاريخه (غيّريها أيضًا في Code.gs)
+  ALWAYS_OPEN: true,
+
   CHALLENGES: [
     {
       day: 1, weekday: "الأحد", date: "2026-11-01", theme: "water",
