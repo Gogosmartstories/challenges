@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>بيتنا مستدام.. وقطر تستحق</title>
+<meta name="description" content="التحديات الأسبوعية للأسرة - مدرسة هند بنت عتبة الإعدادية للبنات، قسم اللغة الإنجليزية.">
+<meta property="og:title" content="بيتنا مستدام.. وقطر تستحق">
+<meta property="og:description" content="تحدٍّ جديد كل يوم للأسرة من الاثنين إلى الخميس - مدرسة هند بنت عتبة الإعدادية للبنات">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1f5e3b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%231f5e3b'/%3E%3Cpath d='M7 17c0-6 4-10 11-10 0 7-4 11-10 11' fill='%23cdeccc'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: green banner with a maroon serrated (Qatar) edge, then a 2x2 grid of day cards; each card opens its own /day/N page */
+:root{
+  --green:#1f5e3b; --green-2:#2f7d4f; --maroon:#8A1538; --accent-text:#1f5e3b;
+  --sand:#f5f2ea; --card:#ffffff; --line:#e3ddd0;
+  --fg:#22231f; --muted:#666a61; --err:#b42318; --err-soft:#fdecea; --ok:#2f7d4f; --ok-soft:#e3f0e7;
+  --water:#1f6fb2; --water-soft:#dceafa;
+  --energy:#c98a00; --energy-soft:#fdf2d4;
+  --food:#c85a22; --food-soft:#fbe6da;
+  --reuse:#18807f; --reuse-soft:#d9f0ef;
+  --habit:#2f7d4f; --habit-soft:#e1efe3;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --green:#174a2e; --green-2:#6cc391; --accent-text:#8fd5a9;
+  --sand:#141714; --card:#1d211d; --line:#323831; --fg:#eef1ec; --muted:#a9b0a6; --err:#ff8a80; --err-soft:#3a1d1d; --ok:#6cc391; --ok-soft:#1c3326;
+  --water:#7db8ee; --water-soft:#172a3d; --energy:#f2c14e; --energy-soft:#332a14; --food:#f0915e; --food-soft:#36231a; --reuse:#5cc8c5; --reuse-soft:#15302f; --habit:#7ccf98; --habit-soft:#1b3022;
+  color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--sand);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.7}
+[hidden]{display:none!important}
+a{color:inherit}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* banner */
+.banner{background:var(--green);color:#fff;position:relative;overflow:clip;padding-block:calc(26px + env(safe-area-inset-top,0px)) 70px;
+  background-image:radial-gradient(circle at 8% 20%,rgba(255,255,255,.07) 0 110px,transparent 111px),radial-gradient(circle at 92% 90%,rgba(255,255,255,.06) 0 150px,transparent 151px)}
+.banner::after{content:"";position:absolute;inset:auto 0 -1px 0;height:30px;background:var(--maroon);
+  clip-path:polygon(0 100%,0 30%,5.55% 100%,11.1% 30%,16.65% 100%,22.2% 30%,27.75% 100%,33.3% 30%,38.85% 100%,44.4% 30%,50% 100%,55.55% 30%,61.1% 100%,66.65% 30%,72.2% 100%,77.75% 30%,83.3% 100%,88.85% 30%,94.4% 100%,100% 30%,100% 100%)}
+.stripe{height:10px;background:var(--maroon)}
+.who{display:grid;gap:2px;font-size:13px;opacity:.92}
+.who b{font-size:14px}
+.tag{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.14);font-size:13px;font-weight:600}
+.tag svg{width:16px;height:16px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.hero > div{min-width:0}
+@media (max-width:680px){.hero{grid-template-columns:1fr}.art{max-width:220px;order:-1;justify-self:center}}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,6.4vw,52px);line-height:1.3;margin:10px 0 6px;text-wrap:balance}
+h1 em{font-style:normal;color:#ffd6e0}
+.lede{margin:0;font-size:clamp(16px,2.6vw,19px);opacity:.95;max-width:44ch}
+.art{width:100%;max-width:300px;justify-self:center}
+.art svg{width:100%;height:auto;display:block}
+
+main{padding-block:30px 44px;display:grid;gap:22px}
+.sec-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(22px,3.6vw,26px);margin:0;color:var(--accent-text)}
+.sec-h .en{font-size:13px;color:var(--muted);direction:ltr;font-weight:600;letter-spacing:.3px}
+.hint{color:var(--muted);font-size:14px;margin:0}
+
+/* challenge cards */
+.t-water{--c:var(--water);--cs:var(--water-soft)}
+.t-energy{--c:var(--energy);--cs:var(--energy-soft)}
+.t-food{--c:var(--food);--cs:var(--food-soft)}
+.t-reuse{--c:var(--reuse);--cs:var(--reuse-soft)}
+.t-habit{--c:var(--habit);--cs:var(--habit-soft)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.grid > .ch:last-child:nth-child(odd){grid-column:1 / -1}
+@media (max-width:620px){.grid{grid-template-columns:1fr}}
+.ch{position:relative;display:grid;grid-template-rows:auto 1fr;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.ch:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,40,25,.14)}
+.ch:focus-visible{outline:3px solid var(--c);outline-offset:3px}
+.ch-top{background:var(--cs);padding:18px 20px;display:flex;align-items:center;gap:16px;position:relative}
+.ico{flex:none;width:72px;height:72px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.ico svg{width:40px;height:40px}
+.when{min-width:0}
+.when .wd{font-family:var(--display);font-size:24px;line-height:1.2;color:var(--fg)}
+.when .dt{font-size:14px;color:var(--muted);font-weight:600}
+.num{position:absolute;inset-inline-end:16px;top:12px;font-family:var(--display);font-size:46px;line-height:1;color:var(--c);opacity:.22}
+.ch-body{padding:16px 20px 18px;display:grid;gap:8px;align-content:start}
+.ch-title{font-family:var(--display);font-size:22px;color:var(--c);margin:0;line-height:1.3}
+.ch-title small{display:block;font-family:var(--body);font-size:12px;font-weight:600;color:var(--muted);direction:ltr;text-align:right;letter-spacing:.3px}
+.ch-desc{margin:0;font-size:15px}
+.ch-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:6px}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700}
+.pill.open{background:var(--ok-soft);color:var(--ok)}
+.pill.open::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;animation:pulse 1.6s infinite}
+.pill.soon{background:var(--cs);color:var(--c)}
+.pill.closed{background:var(--line);color:var(--muted)}
+@keyframes pulse{50%{opacity:.25}}
+.go{font-weight:700;font-size:14px;color:var(--c);display:inline-flex;align-items:center;gap:4px}
+.go svg{width:16px;height:16px}
+.ch.is-closed .ico{filter:grayscale(.6);opacity:.75}
+.ch.is-today{border:2px solid var(--c);box-shadow:0 10px 26px rgba(20,40,25,.12)}
+.today-flag{position:absolute;z-index:2;top:0;inset-inline-start:24px;background:var(--c);color:#fff;font-size:12px;font-weight:700;padding:2px 10px 4px;border-radius:0 0 8px 8px}
+
+.intro{font-size:17px;margin:0;max-width:70ch}
+.card.prize{display:flex;gap:16px;align-items:center;background:linear-gradient(135deg,#8A1538,#b02a55);color:#fff;border:0}
+.card.prize .cup{flex:none;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center}
+.card.prize .cup svg{width:36px;height:36px;color:#ffd45c}
+.card.prize h2{color:#fff}
+.card.prize p{margin:4px 0 0;opacity:.95}
+.or{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:14px;font-weight:600}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;display:grid;gap:16px}
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:s}
+@media (max-width:620px){.how{grid-template-columns:1fr}}
+.how div{background:var(--sand);border-radius:12px;padding:14px;font-size:15px;display:flex;gap:10px;align-items:flex-start}
+.how div::before{counter-increment:s;content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;background:var(--green-2);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+
+/* day page */
+.dayband{background:var(--c);color:#fff;padding-block:calc(18px + env(safe-area-inset-top,0px)) 30px;position:relative;overflow:clip}
+.dayband::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.1);inset-inline-start:-60px;top:-80px}
+.back{display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:none;font-weight:600;font-size:14px;background:rgba(0,0,0,.15);border-radius:999px;padding:4px 14px}
+.back svg{width:16px;height:16px}
+.dayhead{display:flex;align-items:center;gap:18px;margin-top:18px;position:relative}
+.dayhead .ico{width:84px;height:84px;background:#fff;color:var(--c)}
+.dayhead .ico svg{width:48px;height:48px}
+.dayhead .meta{min-width:0}
+.dayhead .k{font-size:14px;font-weight:600;opacity:.92}
+.dayhead h1{margin:2px 0 0;font-size:clamp(28px,6vw,42px)}
+.dayhead .enx{direction:ltr;text-align:right;font-size:14px;font-weight:600;opacity:.9}
+.daydesc{font-size:clamp(17px,2.8vw,20px);margin:16px 0 0;max-width:52ch;position:relative}
+.status{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:2px solid var(--c);background:var(--cs)}
+.status .big{font-family:var(--display);font-size:22px;color:var(--c);line-height:1.3}
+.status .clock{font-variant-numeric:tabular-nums;font-weight:700;font-size:26px;direction:ltr;color:var(--fg)}
+.status .s-text{flex:1 1 220px;min-width:0}
+.ideas{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ideas li{display:flex;gap:10px;align-items:flex-start}
+.ideas li svg{flex:none;width:20px;height:20px;margin-top:4px;color:var(--c)}
+
+label{display:block;font-weight:600;margin-bottom:6px}
+.req{color:var(--err)}
+input[type=text],textarea{width:100%;font:inherit;color:var(--fg);background:var(--sand);border:1.5px solid var(--line);border-radius:10px;padding:11px 14px}
+textarea{resize:vertical;min-height:84px}
+input[type=text]:focus,textarea:focus{outline:none;border-color:var(--c);box-shadow:0 0 0 3px var(--cs)}
+.fields{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+.fields .full{grid-column:1 / -1}
+@media (max-width:560px){.fields{grid-template-columns:1fr}}
+.field-err{color:var(--err);font-size:13px;margin-top:4px;min-height:1.2em}
+.drop{position:relative;display:grid;place-items:center;gap:6px;text-align:center;border:2px dashed var(--line);border-radius:12px;padding:22px;cursor:pointer;font-weight:400;margin:0;transition:border-color .2s,background .2s}
+.drop:hover,.drop.over{border-color:var(--c);background:var(--cs)}
+.drop svg{width:36px;height:36px;color:var(--c)}
+.drop input{position:absolute;opacity:0;width:1px;height:1px}
+.drop:focus-within{border-color:var(--c);box-shadow:0 0 0 3px var(--cs)}
+.preview{display:flex;gap:14px;align-items:center;margin-top:10px}
+.preview img,.preview video{width:96px;height:96px;object-fit:cover;border-radius:10px;border:3px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.15);flex:none;background:#000}
+.preview .info{min-width:0}
+.file-ok{color:var(--ok);font-weight:600;font-size:14px;margin:0;overflow-wrap:anywhere}
+.file-bad{color:var(--err);font-weight:600;font-size:14px;margin:8px 0 0}
+.progress{height:8px;background:var(--cs);border-radius:99px;overflow:hidden}
+.progress span{display:block;height:100%;width:0;background:var(--c);border-radius:99px;transition:width .3s}
+.btn{font:inherit;font-weight:700;border:0;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:8px;justify-content:center;width:100%;padding:15px;font-size:17px;background:var(--c);color:#fff}
+.btn:disabled{opacity:.6;cursor:wait}
+.btn:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
+.btn svg{width:20px;height:20px}
+.spin{display:block;width:20px;height:20px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:s .9s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+.msg{border-radius:10px;padding:12px 14px;font-weight:600;font-size:15px;margin:0}
+.msg.err{background:var(--err-soft);color:var(--err)}
+.done{text-align:center;justify-items:center}
+.tick{width:64px;height:64px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:grid;place-items:center}
+.tick svg{width:34px;height:34px}
+.ghost{background:transparent;color:var(--fg);border:1.5px solid var(--line);width:auto;padding:10px 18px;font-size:15px;text-decoration:none;display:inline-flex}
+footer{text-align:center;color:var(--muted);font-size:13px;padding-block:0 calc(32px + env(safe-area-inset-bottom,0px))}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ======== HOME: all challenges ======== -->
+<div id="home">
+  <header class="banner">
+    <div class="wrap hero">
+      <div>
+        <div class="who"><span>وزارة التربية والتعليم والتعليم العالي</span><b>مدرسة هند بنت عتبة الإعدادية للبنات</b><span>قسم اللغة الإنجليزية</span></div>
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19 13 11"/></svg>مبادرة</span>
+        <h1>بيتنا مستدام.. <em>وقطر تستحق</em></h1>
+        <p class="lede">هيا بنا نشارك في تشجيع العادات المستدامة في المنزل! خمسة تحديات للأسرة، تحدٍّ كل يوم.</p>
+      </div>
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 300 260">
+          <circle cx="232" cy="58" r="30" fill="#ffd45c"/>
+          <g stroke="#ffd45c" stroke-width="5" stroke-linecap="round"><path d="M232 12v10M232 94v10M186 58h10M268 58h10M200 26l7 7M257 83l7 7M264 26l-7 7M207 83l-7 7"/></g>
+          <path d="M40 140 150 62l110 78" fill="none" stroke="#cdeccc" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+          <rect x="66" y="132" width="168" height="108" rx="10" fill="#fff"/>
+          <rect x="92" y="156" width="40" height="36" rx="6" fill="#d9f0ef"/><rect x="168" y="156" width="40" height="36" rx="6" fill="#fdf2d4"/>
+          <path d="M132 240v-36a18 18 0 0 1 36 0v36z" fill="#8A1538"/>
+          <path d="M224 132c0-30 22-50 56-50 0 34-22 54-50 54" fill="#6cc391"/><path d="M226 134 262 98" stroke="#1f5e3b" stroke-width="3"/>
+          <path d="M60 240c-6-26 6-46 30-54 6 26-6 46-30 54z" fill="#6cc391"/>
+          <rect x="20" y="238" width="260" height="8" rx="4" fill="#cdeccc"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+  <div class="stripe"></div>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>أولياء الأمور الكرام</h2>
+      <p class="intro">ندعوكم إلى مشاركة بناتكم في تنفيذ التحديات الخمسة على مدار الأسبوع، وتحويلها إلى ممارسات بسيطة داخل المنزل، نغرس من خلالها ثقافة المحافظة على البيئة وترشيد الاستهلاك وإعادة الاستخدام.</p>
+    </section>
+
+    <div class="sec-h"><h2>بطاقة التحديات الأسبوعية للأسرة</h2><span class="en">Weekly Family Challenges</span></div>
+    <p class="hint" style="margin-top:-12px">اضغطي على تحدي اليوم لإرسال صورة توضّح تنفيذه، أو وصف بسيط لكيفية تنفيذه. كل تحدٍّ مفتوح 24 ساعة فقط في يومه.</p>
+    <div class="grid" id="grid"></div>
+
+    <section class="card">
+      <h2>كيف تشاركين؟</h2>
+      <div class="how">
+        <div>نفّذي تحدي اليوم مع أسرتك في المنزل.</div>
+        <div>صوّري التحدي، أو اكتبي وصفًا بسيطًا لطريقة تنفيذه.</div>
+        <div>افتحي بطاقة اليوم وأرسلي المشاركة قبل منتصف الليل.</div>
+      </div>
+    </section>
+
+    <section class="card prize">
+      <div class="cup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M9 17h6v4H9z"/></svg></div>
+      <div><h2>جوائز قيّمة</h2><p>تُقدَّم جوائز قيّمة للمشاركات المتميزة، تقديرًا لإبداعكنّ وجهودكنّ ومساهماتكنّ الفاعلة.</p></div>
+    </section>
+  </main>
+</div>
+
+<!-- ======== DAY PAGE ======== -->
+<div id="day" hidden>
+  <header class="dayband">
+    <div class="wrap">
+      <a class="back" href="/" id="back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 6 6 6-6 6"/></svg>كل التحديات</a>
+      <div class="dayhead">
+        <div class="ico" id="d-ico"></div>
+        <div class="meta">
+          <div class="k" id="d-k"></div>
+          <h1 id="d-title"></h1>
+          <div class="enx" id="d-en"></div>
+        </div>
+      </div>
+      <p class="daydesc" id="d-desc"></p>
+    </div>
+  </header>
+  <div class="stripe"></div>
+
+  <main class="wrap">
+    <section class="card status" id="status">
+      <div class="s-text"><div class="big" id="st-big"></div><div class="hint" id="st-sub"></div></div>
+      <div class="clock" id="st-clock"></div>
+    </section>
+
+    <section class="card">
+      <h2>أفكار للتطبيق</h2>
+      <ul class="ideas" id="d-ideas"></ul>
+    </section>
+
+    <form class="card" id="entry" novalidate>
+      <h2>أرسلي مشاركتك</h2>
+      <div class="fields">
+        <div>
+          <label for="name">اسم الطالبة <span class="req">*</span></label>
+          <input type="text" id="name" autocomplete="name" placeholder="مثال: مريم أحمد الكواري">
+          <div class="field-err" id="name-err"></div>
+        </div>
+        <div>
+          <label for="grade">الصف - الشعبة <span class="req">*</span></label>
+          <input type="text" id="grade" placeholder="مثال: الثامن - 3">
+          <div class="field-err" id="grade-err"></div>
+        </div>
+      </div>
+      <p class="hint" style="margin:0">وثّقي مشاركتك بصورة، أو بوصف مكتوب، أو بالاثنين معًا.</p>
+      <div>
+        <label for="file">صورة أو فيديو</label>
+        <label class="drop" id="drop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          <span><b>اختاري صورة أو فيديو</b> أو اسحبيه إلى هنا</span>
+          <span class="hint">ملف واحد · حتى 10 ميجابايت</span>
+          <input type="file" id="file" accept="image/*,video/*">
+        </label>
+        <div class="preview" id="preview" hidden><span id="thumb-box"></span><div class="info" id="file-msg" aria-live="polite"></div></div>
+        <div id="file-bad" aria-live="polite"></div>
+      </div>
+      <div class="or">أو / و</div>
+      <div>
+        <label for="note">صفي كيف نفّذتِ التحدي مع أسرتك</label>
+        <textarea id="note" maxlength="600" placeholder="مثال: أغلقنا الصنبور أثناء تنظيف الأسنان، واستخدمنا كوبًا للمضمضة."></textarea>
+        <div class="field-err" id="note-err"></div>
+      </div>
+      <div class="progress" id="progress" hidden><span id="bar"></span></div>
+      <p class="msg err" id="err" hidden></p>
+      <button class="btn" id="send" type="submit">
+        <span id="send-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0-5 5m5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></span>
+        <span id="send-label">إرسال المشاركة</span>
+      </button>
+      <p class="hint" style="text-align:center">لا تحتاجين إلى حساب. تصل المشاركة مباشرة إلى معلمات المبادرة.</p>
+    </form>
+
+    <section class="card done" id="done" hidden>
+      <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5 9-10"/></svg></div>
+      <h2>تم استلام مشاركتك</h2>
+      <p class="hint" id="done-text"></p>
+      <a class="btn ghost" href="/" id="done-back">العودة إلى كل التحديات</a>
+    </section>
+  </main>
+</div>
+
+<footer class="wrap">مدرسة هند بنت عتبة الإعدادية للبنات · قسم اللغة الإنجليزية · بيتنا مستدام.. وقطر تستحق</footer>
+
+<script src="/config.js"></script>
+<script>
+(function(){
+  var CFG = window.CONFIG || {}, LIST = CFG.CHALLENGES || [], UPLOAD_URL = CFG.UPLOAD_URL || '';
+  var MAX = 10 * 1024 * 1024, DAY_MS = 86400000;
+  var MONTHS = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  var ICONS = {
+    water: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9a3 3 0 0 1 3 3v1"/><path d="M4 5v4M8 7V5h3"/><path d="M16 14s-2.5 3-2.5 4.5a2.5 2.5 0 0 0 5 0C18.5 17 16 14 16 14z"/></svg>',
+    energy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/><path d="m12 7-1.5 3h3L12 13"/></svg>',
+    food: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="6"/><circle cx="12" cy="13" r="3"/><path d="M3 4v5a2 2 0 0 0 2 2v9M5 4v4M21 4c-1.5 0-2.5 2-2.5 5s1 3 2.5 3v8"/></svg>',
+    reuse: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.3 12H6.3z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="M10 15.5a2.5 2.5 0 0 1 4.3-1.7M14 12.5v1.5h-1.5"/></svg>',
+    habit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M12 18s-3.5-2-3.5-4.5A1.9 1.9 0 0 1 12 12.4a1.9 1.9 0 0 1 3.5 1.1C15.5 16 12 18 12 18z"/></svg>'
+  };
+  var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>';
+  var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 6-6 6 6 6"/></svg>';
+
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function clean(s){ return s.trim().replace(/\s+/g, ' '); }
+  function win(c){ var s = new Date(c.date + 'T00:00:00+03:00'); return { start: s, end: new Date(s.getTime() + DAY_MS) }; }
+  function state(c, now){ var w = win(c); return now < w.start ? 'soon' : now < w.end ? 'open' : 'closed'; }
+  function dateText(c){ var p = c.date.split('-'); return Number(p[2]) + ' ' + MONTHS[Number(p[1]) - 1]; }
+  function isLocal(){ return location.protocol === 'file:' || /^(localhost|127\.)/.test(location.hostname); }
+  function dayHref(n){ return isLocal() ? '?day=' + n : '/day/' + n; }
+  function dur(ms){
+    var m = Math.ceil(ms / 60000), d = Math.floor(m / 1440), h = Math.floor(m % 1440 / 60), mm = m % 60;
+    if (d >= 1) return (d === 1 ? 'يوم' : d === 2 ? 'يومين' : d + ' أيام') + (h ? ' و' + h + ' ساعة' : '');
+    if (h >= 1) return h + ' ساعة' + (mm ? ' و' + mm + ' دقيقة' : '');
+    return mm + ' دقيقة';
+  }
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function clock(ms){ var s = Math.max(0, Math.floor(ms / 1000)); return pad(Math.floor(s / 3600)) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60); }
+
+  /* ---------- home ---------- */
+  function renderHome(){
+    var now = new Date();
+    $('grid').innerHTML = LIST.map(function(c){
+      var st = state(c, now), w = win(c);
+      var pill = st === 'open' ? '<span class="pill open">مفتوح الآن · يُغلق بعد ' + dur(w.end - now) + '</span>'
+               : st === 'soon' ? '<span class="pill soon">يفتح بعد ' + dur(w.start - now) + '</span>'
+               : '<span class="pill closed">انتهى التحدي</span>';
+      var go = st === 'open' ? 'شاركي الآن' : st === 'soon' ? 'تفاصيل التحدي' : 'عرض التحدي';
+      return '<a class="ch t-' + c.theme + (st === 'open' ? ' is-today' : '') + (st === 'closed' ? ' is-closed' : '') + '" href="' + dayHref(c.day) + '">' +
+        (st === 'open' ? '<span class="today-flag">تحدي اليوم</span>' : '') +
+        '<div class="ch-top"><div class="ico">' + ICONS[c.theme] + '</div>' +
+        '<div class="when"><div class="wd">' + esc(c.weekday) + '</div><div class="dt">' + dateText(c) + '</div></div>' +
+        '<span class="num">' + c.day + '</span></div>' +
+        '<div class="ch-body"><h3 class="ch-title">' + esc(c.title) + '<small>' + esc(c.en) + '</small></h3>' +
+        '<p class="ch-desc">' + esc(c.desc) + '</p>' +
+        '<div class="ch-foot">' + pill + '<span class="go">' + go + ARROW + '</span></div></div></a>';
+    }).join('');
+  }
+
+  /* ---------- day page ---------- */
+  var current = null, chosen = null, thumbUrl = null, timer = null;
+  function getDayParam(){
+    var m = location.pathname.match(/\/day\/(\d+)/), q = new URLSearchParams(location.search).get('day');
+    return Number((m && m[1]) || q || 0);
+  }
+  function renderStatus(){
+    var now = new Date(), st = state(current, now), w = win(current);
+    var open = st === 'open';
+    $('entry').hidden = !open || !$('done').hidden;
+    if (st === 'soon'){
+      $('st-big').textContent = 'يفتح هذا التحدي يوم ' + current.weekday + ' ' + dateText(current);
+      $('st-sub').textContent = 'يبدأ استقبال المشاركات الساعة 12:00 صباحًا. متبقٍ ' + dur(w.start - now) + '.';
+      $('st-clock').textContent = '';
+    } else if (open){
+      $('st-big').textContent = 'التحدي مفتوح الآن';
+      $('st-sub').textContent = 'يُغلق اليوم الساعة 11:59 مساءً. الوقت المتبقي:';
+      $('st-clock').textContent = clock(w.end - now);
+    } else {
+      $('st-big').textContent = 'انتهى هذا التحدي';
+      $('st-sub').textContent = 'كان مفتوحًا 24 ساعة فقط يوم ' + current.weekday + ' ' + dateText(current) + '. تابعي تحدي اليوم من صفحة كل التحديات.';
+      $('st-clock').textContent = '';
+    }
+  }
+  function renderDay(c){
+    current = c;
+    document.body.className = 't-' + c.theme;
+    document.title = c.title + ' | بيتنا مستدام';
+    $('home').hidden = true; $('day').hidden = false;
+    $('back').href = $('done-back').href = isLocal() ? '?' : '/';
+    $('d-ico').innerHTML = ICONS[c.theme];
+    $('d-k').textContent = 'التحدي ' + c.day + ' من ' + LIST.length + ' · ' + c.weekday + ' ' + dateText(c);
+    $('d-title').textContent = c.title;
+    $('d-en').textContent = c.en;
+    $('d-desc').textContent = c.desc;
+    $('d-ideas').innerHTML = (c.ideas || []).map(function(i){ return '<li>' + CHECK + '<span>' + esc(i) + '</span></li>'; }).join('');
+    renderStatus();
+    setInterval(renderStatus, 1000);
+  }
+
+  function check(file){
+    chosen = null; $('file-bad').innerHTML = ''; $('preview').hidden = true; $('thumb-box').innerHTML = '';
+    if (thumbUrl){ URL.revokeObjectURL(thumbUrl); thumbUrl = null; }
+    if (!file) return;
+    var mb = (file.size / 1048576).toFixed(1), t = file.type || '';
+    if (t.indexOf('image/') !== 0 && t.indexOf('video/') !== 0){
+      $('file-bad').innerHTML = '<p class="file-bad">اختاري صورة أو فيديو.</p>';
+    } else if (file.size > MAX){
+      $('file-bad').innerHTML = '<p class="file-bad">حجم الملف ' + mb + ' ميجابايت، والحد الأقصى 10 ميجابايت. اختصري الفيديو أو اختاري صورة.</p>';
+    } else {
+      chosen = file; thumbUrl = URL.createObjectURL(file);
+      var el = document.createElement(t.indexOf('video/') === 0 ? 'video' : 'img');
+      el.src = thumbUrl; if (el.tagName === 'VIDEO'){ el.muted = true; el.playsInline = true; } else { el.alt = 'معاينة الصورة'; }
+      $('thumb-box').appendChild(el);
+      $('file-msg').innerHTML = '<p class="file-ok">✓ ' + esc(file.name) + '</p><p class="hint">' + mb + ' ميجابايت</p>';
+      $('preview').hidden = false;
+    }
+  }
+  function busy(on){
+    $('send').disabled = on;
+    $('send-icon').innerHTML = on ? '<span class="spin"></span>' : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0-5 5m5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>';
+    $('send-label').textContent = on ? 'جارٍ الرفع… لا تغلقي الصفحة' : 'إرسال المشاركة';
+    $('progress').hidden = !on; clearInterval(timer);
+    if (on){ var p = 5; $('bar').style.width = p + '%'; timer = setInterval(function(){ p = Math.min(92, p + (95 - p) * 0.06); $('bar').style.width = p + '%'; }, 400); }
+  }
+  function showErr(t){ $('err').textContent = t || ''; $('err').hidden = !t; }
+  function toBase64(file){
+    return new Promise(function(res, rej){
+      var r = new FileReader();
+      r.onload = function(){ res(String(r.result).split(',')[1]); };
+      r.onerror = function(){ rej(new Error('تعذّرت قراءة الملف. اختاريه مرة أخرى.')); };
+      r.readAsDataURL(file);
+    });
+  }
+  function wireForm(){
+    $('file').addEventListener('change', function(e){ check(e.target.files[0]); });
+    var drop = $('drop');
+    ['dragenter','dragover'].forEach(function(t){ drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.add('over'); }); });
+    ['dragleave','drop'].forEach(function(t){ drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.remove('over'); }); });
+    drop.addEventListener('drop', function(e){ check(e.dataTransfer.files[0]); });
+    ['name','grade','note'].forEach(function(id){ $(id).addEventListener('input', function(){ $(id + '-err').textContent = ''; }); });
+
+    $('entry').addEventListener('submit', function(e){
+      e.preventDefault(); showErr('');
+      if (state(current, new Date()) !== 'open'){ renderStatus(); return; }
+      var name = clean($('name').value), grade = clean($('grade').value), note = clean($('note').value), ok = true;
+      if (!name){ $('name-err').textContent = 'اكتبي اسم الطالبة.'; ok = false; }
+      if (!grade){ $('grade-err').textContent = 'اكتبي الصف والشعبة.'; ok = false; }
+      if (!chosen && $('file-bad').innerHTML) ok = false;
+      else if (!chosen && note.length < 10){ $('note-err').textContent = 'أرفقي صورة، أو اكتبي وصفًا بسيطًا لكيفية تنفيذ التحدي.'; ok = false; }
+      if (!ok) return;
+      if (!UPLOAD_URL || UPLOAD_URL.indexOf('script.google.com') === -1){ showErr('رابط الرفع غير مضبوط في ملف config.js. يُرجى مراجعة معلمة المادة.'); return; }
+
+      busy(true);
+      (chosen ? toBase64(chosen) : Promise.resolve('')).then(function(data){
+        return fetch(UPLOAD_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ day: current.day, name: name, grade: grade, note: note, fileName: chosen ? chosen.name : '', mimeType: chosen ? chosen.type : '', data: data }) });
+      }).then(function(r){ return r.json(); })
+      .then(function(res){
+        if (!res || !res.ok) throw new Error((res && res.error) || 'حدث خطأ غير متوقع.');
+        $('bar').style.width = '100%'; busy(false);
+        $('done').hidden = false; $('entry').hidden = true;
+        $('done-text').textContent = 'شكرًا ' + name + '، وصلت مشاركتك في ' + current.title + '. أحسنتِ أنتِ وأسرتك!';
+        window.scrollTo({ top: $('done').offsetTop - 20, behavior: 'smooth' });
+      }).catch(function(err){
+        busy(false);
+        var m = err && err.message;
+        if (!m || /fetch|network|json|Failed|Load/i.test(m)) m = 'تحقّقي من الاتصال بالإنترنت ثم حاولي مرة أخرى.';
+        showErr('لم يكتمل الرفع: ' + m);
+      });
+    });
+  }
+
+  var n = getDayParam(), found = LIST.filter(function(c){ return c.day === n; })[0];
+  if (found){ wireForm(); renderDay(found); }
+  else { renderHome(); setInterval(renderHome, 60000); }
+})();
+</script>
+</body>
+</html>
