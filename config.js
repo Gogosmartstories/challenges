@@ -1,7 +1,7 @@
 // إعدادات مبادرة «بيتنا مستدام.. وقطر تستحق»
 window.CONFIG = {
   // الصقي هنا رابط Web app من Google Apps Script (ينتهي بـ /exec)
-  UPLOAD_URL: "ضعي_هنا_رابط_السكريبت",
+  UPLOAD_URL: "https://script.google.com/macros/s/AKfycbxqSVa7mFW-bj2LyajisGgWsz-kxYIWbq5igDht0kr7ARGvNYxcWEkiL7KV_NNKo4uG/exec",
 
   // true: جميع التحديات مفتوحة دائمًا دون وقت محدد
   // false: كل تحدٍّ مفتوح 24 ساعة فقط في تاريخه (غيّريها أيضًا في Code.gs)
